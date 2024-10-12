@@ -17,9 +17,9 @@ export const TodoList: React.FC<Props> = ({
   const [deletedId, setDeletedId] = useState<number | null>(null);
 
   const handleDelete = (id: number) => {
-    setDeletedId(id)
-    deleteOneTodo(id)
-  }
+    setDeletedId(id);
+    deleteOneTodo(id);
+  };
 
   return (
     <section className="todoapp__main" data-cy="TodoList">
@@ -97,11 +97,7 @@ export const TodoList: React.FC<Props> = ({
           </span>
 
           {/* Remove button appears only on hover */}
-          <button
-            type="button"
-            className="todo__remove"
-            data-cy="TodoDelete"
-          >
+          <button type="button" className="todo__remove" data-cy="TodoDelete">
             ×
           </button>
 

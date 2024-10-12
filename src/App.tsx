@@ -95,11 +95,11 @@ export const App: React.FC = () => {
         setErrorMessage('Unable to delete a todo');
         setTimeout(() => setErrorMessage(''), 3000);
         throw error;
-      })
+      });
   }
 
   function deleteCompleted() {
-    todos.forEach(todo => todo.completed && deleteOneTodo(todo.id));
+    todos.filter(todo => todo.completed).forEach(todo => deleteOneTodo(todo.id));
   }
 
   if (!USER_ID) {
