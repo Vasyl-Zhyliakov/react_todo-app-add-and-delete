@@ -36,10 +36,9 @@ export const App: React.FC = () => {
 
     getTodos()
       .then(setTodos)
-      .catch(error => {
+      .catch(() => {
         setErrorMessage('Unable to load todos');
         setTimeout(() => setErrorMessage(''), 3000);
-        throw error;
       })
       .finally(() => setLoading(false));
   }, []);
@@ -72,11 +71,10 @@ export const App: React.FC = () => {
         setTodoTitle('');
       })
 
-      .catch(error => {
+      .catch(() => {
         setErrorMessage('Unable to add a todo');
         setTempTodo(null);
         setTimeout(() => setErrorMessage(''), 3000);
-        throw error;
       })
       .finally(() => {
         setLoading(false);
