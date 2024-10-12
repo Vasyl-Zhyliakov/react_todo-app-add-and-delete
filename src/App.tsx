@@ -91,27 +91,16 @@ export const App: React.FC = () => {
           currentTodos.filter(todo => todo.id !== todoId),
         );
       })
-      .catch(error => {
+      .catch(() => {
         setErrorMessage('Unable to delete a todo');
         setTimeout(() => setErrorMessage(''), 3000);
-        throw error;
       });
   }
 
-  async function deleteCompleted() {
-    setErrorMessage('');
-  
-    const completedTodos = todos.filter(todo => todo.completed);
-  
-    for (const todo of completedTodos) {
-      try {
-        await deleteOneTodo(todo.id);
-      } catch (error) {
-        setErrorMessage('Unable to delete a todo');
-        setTimeout(() => setErrorMessage(''), 3000);
-        throw error;
-      }
-    }
+  function deleteCompleted() {
+    todos
+      .filter(todo => todo.completed)
+      .forEach(todo => deleteOneTodo(todo.id));
   }
 
   if (!USER_ID) {
